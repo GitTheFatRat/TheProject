@@ -1,1 +1,12 @@
-<Solution />
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="198v7.Core/198v7.Core.csproj" />
+  <Project Path="198v7.Data/198v7.Data.csproj" />
+  <Project Path="198v7.Native/198v7.Native.vcxproj" />
+  <Project Path="198v7.Shared/198v7.Shared.csproj" />
+  <Project Path="198v7.UI/198v7.UI.csproj" />
+</Solution>
