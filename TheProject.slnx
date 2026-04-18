@@ -6,7 +6,7 @@
   </Configurations>
   <Project Path="198v7.Core/198v7.Core.csproj" />
   <Project Path="198v7.Data/198v7.Data.csproj" />
-  <Project Path="198v7.Native/198v7.Native.vcxproj" />
+  <Project Path="198v7.Native/198v7.Native.vcxproj" Id="01fed6c5-efe4-4caa-92b2-ee90fc2a94a0" />
   <Project Path="198v7.Shared/198v7.Shared.csproj" />
   <Project Path="198v7.UI/198v7.UI.csproj" />
 </Solution>

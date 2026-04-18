@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="BgPrimary">#0C0E10</Color>
+    <Color x:Key="BgSecondary">#12161C</Color>
+    <Color x:Key="BgTertiary">#0E1318</Color>
+    <Color x:Key="BgPanel">#141820</Color>
+
+    <Color x:Key="Accent">#00E87A</Color>
+    <Color x:Key="AccentDim">#00BB55</Color>
+    <Color x:Key="AccentGlow">#2200E87A</Color>
+
+    <Color x:Key="TextPrimary">#E0E0E0</Color>
+    <Color x:Key="TextSecondary">#888888</Color>
+    <Color x:Key="TextDim">#445566</Color>
+
+    <Color x:Key="Good">#00E87A</Color>
+    <Color x:Key="Warn">#F0A500</Color>
+    <Color x:Key="Danger">#FF4040</Color>
+    <Color x:Key="Info">#4A9EFF</Color>
+
+    <Color x:Key="Border">#1C2228</Color>
+    <Color x:Key="BorderHover">#2A3540</Color>
+
+    <SolidColorBrush x:Key="BrushBgPrimary"    Color="{StaticResource BgPrimary}"/>
+    <SolidColorBrush x:Key="BrushBgSecondary"  Color="{StaticResource BgSecondary}"/>
+    <SolidColorBrush x:Key="BrushBgTertiary"   Color="{StaticResource BgTertiary}"/>
+    <SolidColorBrush x:Key="BrushBgPanel"      Color="{StaticResource BgPanel}"/>
+
+    <SolidColorBrush x:Key="BrushAccent"       Color="{StaticResource Accent}"/>
+    <SolidColorBrush x:Key="BrushAccentDim"    Color="{StaticResource AccentDim}"/>
+    <SolidColorBrush x:Key="BrushAccentGlow"   Color="{StaticResource AccentGlow}"/>
+
+    <SolidColorBrush x:Key="BrushTextPrimary"  Color="{StaticResource TextPrimary}"/>
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource TextSecondary}"/>
+    <SolidColorBrush x:Key="BrushTextDim"      Color="{StaticResource TextDim}"/>
+
+    <SolidColorBrush x:Key="BrushGood"         Color="{StaticResource Good}"/>
+    <SolidColorBrush x:Key="BrushWarn"         Color="{StaticResource Warn}"/>
+    <SolidColorBrush x:Key="BrushDanger"       Color="{StaticResource Danger}"/>
+    <SolidColorBrush x:Key="BrushInfo"         Color="{StaticResource Info}"/>
+
+    <SolidColorBrush x:Key="BrushBorder"       Color="{StaticResource Border}"/>
+    <SolidColorBrush x:Key="BrushBorderHover"  Color="{StaticResource BorderHover}"/>
+
+</ResourceDictionary>
