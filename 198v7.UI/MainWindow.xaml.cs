@@ -45,8 +45,7 @@ namespace _198v7.UI
         private void Nav_MyComputer(object sender, RoutedEventArgs e)
         {
             TabMyComputer.IsChecked = true;
-            // MainFrame.Content = new MyComputerView(); // sẽ làm sau
-            MainFrame.Content = null;
+            MainFrame.Content = new MyComputerView(); // ← thêm dòng này
         }
 
         private void Nav_Cpu(object sender, RoutedEventArgs e)

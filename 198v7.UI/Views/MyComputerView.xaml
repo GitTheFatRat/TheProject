@@ -1,0 +1,765 @@
+﻿<UserControl x:Class="_198v7.UI.Views.MyComputerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BrushBgPrimary}">
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- SCAN STATUS BAR -->
+        <Border x:Name="ScanBar"
+                Grid.Row="0"
+                Background="{StaticResource BrushBgTertiary}"
+                BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="14,10"
+                Margin="0,0,0,10">
+            <Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <!-- Dot animation -->
+                    <Ellipse x:Name="ScanDot"
+                             Width="8" Height="8"
+                             Fill="{StaticResource BrushAccent}"
+                             Margin="0,0,10,0"
+                             VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtScanStatus"
+                               Text="Đang quét phần cứng hệ thống..."
+                               Foreground="{StaticResource BrushTextSecondary}"
+                               FontSize="11"
+                               FontFamily="Segoe UI"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock x:Name="TxtScanPct"
+                           Text="0%"
+                           HorizontalAlignment="Right"
+                           Foreground="{StaticResource BrushTextDim}"
+                           FontSize="9"
+                           FontFamily="Consolas"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- INFO BOX sau khi scan xong -->
+        <Border x:Name="InfoBox"
+                Grid.Row="1"
+                Background="{StaticResource BrushBgSecondary}"
+                BorderBrush="#00E87A28"
+                BorderThickness="1"
+                CornerRadius="5"
+                Padding="10,7"
+                Margin="0,0,0,10"
+                Visibility="Collapsed">
+            <TextBlock Text="198v7 đã nhận diện thành công toàn bộ phần cứng. Nhấn Rescan để cập nhật lại."
+                       Foreground="{StaticResource BrushAccent}"
+                       FontSize="9"
+                       FontFamily="Segoe UI"/>
+        </Border>
+
+        <!-- NỘI DUNG CHÍNH -->
+        <Grid x:Name="MainContent"
+              Grid.Row="2"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- HÀNG 1: 2 CPU CARDS -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- CPU Socket 0 -->
+                <Border Grid.Column="0"
+                        Style="{StaticResource PanelCard}"
+                        Margin="0,0,6,0">
+                    <StackPanel>
+                        <!-- Header -->
+                        <Grid Margin="0,0,0,10">
+                            <StackPanel>
+                                <TextBlock Text="Intel Xeon E5-2686 v4"
+                                           Foreground="#EEEEEE"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           FontFamily="Segoe UI"/>
+                                <TextBlock Text="Socket 0 · LGA2011-3 · Broadwell-EP · CPUID 406F1h"
+                                           Foreground="{StaticResource BrushTextDim}"
+                                           FontSize="9"
+                                           Margin="0,2,0,0"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="#00E87A14"
+                                    BorderBrush="#00E87A30"
+                                    BorderThickness="1"
+                                    CornerRadius="3"
+                                    Padding="7,2">
+                                <TextBlock Text="DETECTED"
+                                           Foreground="{StaticResource BrushAccent}"
+                                           FontSize="9"/>
+                            </Border>
+                        </Grid>
+
+                        <!-- 6 info items -->
+                        <UniformGrid Columns="3" Margin="0,0,0,10">
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,6">
+                                <StackPanel>
+                                    <TextBlock Text="CORES / THREADS"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="18C / 36T"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="HyperThreading ON"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,6">
+                                <StackPanel>
+                                    <TextBlock Text="BASE / BOOST"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="2.3 / 3.4 GHz"
+                                               Foreground="#EEEEEE"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Single-core max"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,0,6">
+                                <StackPanel>
+                                    <TextBlock Text="TDP / TJMAX"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="135W / 76°C"
+                                               Foreground="{StaticResource BrushWarn}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Broadwell-EP"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,0">
+                                <StackPanel>
+                                    <TextBlock Text="L3 CACHE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="45 MB"
+                                               Foreground="{StaticResource BrushInfo}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Shared all cores"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,0">
+                                <StackPanel>
+                                    <TextBlock Text="NUMA NODE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="Node 0"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="64GB · 2ch DDR4"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7">
+                                <StackPanel>
+                                    <TextBlock Text="FREQ LIVE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock x:Name="TxtFreqS0"
+                                               Text="3.2 GHz"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="MSR 0x198"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <!-- Turbo table S0 -->
+                        <TextBlock Text="TURBO RATIO — SOCKET 0"
+                                   Style="{StaticResource MetricLabel}"
+                                   Margin="0,0,0,6"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6" Margin="0,0,4,0">
+                                <StackPanel>
+                                    <TextBlock Text="1–2 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.4 GHz"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="34×  gaming sweet spot"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6" Margin="0,0,4,0">
+                                <StackPanel>
+                                    <TextBlock Text="3–8 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.2–3.3 GHz"
+                                               Foreground="#EEEEEE"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="32–33×"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6">
+                                <StackPanel>
+                                    <TextBlock Text="9–18 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.0–3.1 GHz"
+                                               Foreground="#EEEEEE"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="30–31×  all-core"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- CPU Socket 1 -->
+                <Border Grid.Column="1"
+                        Style="{StaticResource PanelCard}"
+                        Margin="6,0,0,0">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,10">
+                            <StackPanel>
+                                <TextBlock Text="Intel Xeon E5-2686 v4"
+                                           Foreground="#EEEEEE"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           FontFamily="Segoe UI"/>
+                                <TextBlock Text="Socket 1 · LGA2011-3 · Broadwell-EP · CPUID 406F1h"
+                                           Foreground="{StaticResource BrushTextDim}"
+                                           FontSize="9"
+                                           Margin="0,2,0,0"/>
+                            </StackPanel>
+                            <Border HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="#4A9EFF14"
+                                    BorderBrush="#4A9EFF30"
+                                    BorderThickness="1"
+                                    CornerRadius="3"
+                                    Padding="7,2">
+                                <TextBlock Text="DETECTED"
+                                           Foreground="{StaticResource BrushInfo}"
+                                           FontSize="9"/>
+                            </Border>
+                        </Grid>
+
+                        <UniformGrid Columns="3" Margin="0,0,0,10">
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,6">
+                                <StackPanel>
+                                    <TextBlock Text="CORES / THREADS"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="18C / 36T"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="HyperThreading ON"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,6">
+                                <StackPanel>
+                                    <TextBlock Text="BASE / BOOST"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="2.3 / 3.4 GHz"
+                                               Foreground="#EEEEEE"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Single-core max"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,0,6">
+                                <StackPanel>
+                                    <TextBlock Text="TDP / TJMAX"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="135W / 76°C"
+                                               Foreground="{StaticResource BrushWarn}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Broadwell-EP"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,0">
+                                <StackPanel>
+                                    <TextBlock Text="L3 CACHE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="45 MB"
+                                               Foreground="{StaticResource BrushInfo}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Shared all cores"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7" Margin="0,0,6,0">
+                                <StackPanel>
+                                    <TextBlock Text="NUMA NODE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="Node 1"
+                                               Foreground="{StaticResource BrushWarn}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="32GB · 1ch DDR4"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="5" Padding="8,7">
+                                <StackPanel>
+                                    <TextBlock Text="FREQ LIVE"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock x:Name="TxtFreqS1"
+                                               Text="3.0 GHz"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock Text="MSR 0x198"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <!-- Warning RAM imbalance -->
+                        <Border Background="#F0A50010"
+                                BorderBrush="#F0A50028"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                Padding="10,7"
+                                Margin="0,0,0,8">
+                            <TextBlock Text="Node 1 chỉ có 1 thanh RAM 32GB (đơn kênh) — băng thông thấp hơn Node 0. 198v7 tự động pin game → Node 0."
+                                       Foreground="{StaticResource BrushWarn}"
+                                       FontSize="9"
+                                       TextWrapping="Wrap"/>
+                        </Border>
+
+                        <!-- Turbo table S1 -->
+                        <TextBlock Text="TURBO RATIO — SOCKET 1"
+                                   Style="{StaticResource MetricLabel}"
+                                   Margin="0,0,0,6"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6" Margin="0,0,4,0">
+                                <StackPanel>
+                                    <TextBlock Text="1–2 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.4 GHz"
+                                               Foreground="{StaticResource BrushGood}"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="34×"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6" Margin="0,0,4,0">
+                                <StackPanel>
+                                    <TextBlock Text="3–8 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.2–3.3 GHz"
+                                               Foreground="#EEEEEE"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="32–33×"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2"
+                                    Background="{StaticResource BrushBgSecondary}"
+                                    CornerRadius="4" Padding="8,6">
+                                <StackPanel>
+                                    <TextBlock Text="9–18 cores"
+                                               Style="{StaticResource MetricLabel}"/>
+                                    <TextBlock Text="3.0–3.1 GHz"
+                                               Foreground="{StaticResource BrushWarn}"
+                                               FontSize="11" FontWeight="SemiBold"/>
+                                    <TextBlock Text="AVX -2 bins"
+                                               Style="{StaticResource MetricSub}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- HÀNG 2: GPU + RAM + Mainboard + Fan -->
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- GPU -->
+                <Border Grid.Column="0"
+                        Style="{StaticResource PanelCard}"
+                        Margin="0,0,6,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="36" Height="36"
+                                Background="#4A9EFF14"
+                                BorderBrush="#4A9EFF28"
+                                BorderThickness="1"
+                                CornerRadius="7"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="G" FontSize="16"
+                                       Foreground="{StaticResource BrushInfo}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="NVIDIA GeForce RTX 3060"
+                                       Foreground="#DDDDDD"
+                                       FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock Text="12GB GDDR6 · PCIe Gen3 x16"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9" Margin="0,2,0,0"/>
+                            <TextBlock Text="Driver 556.12 · IRQ → Socket 0"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9"/>
+                            <Border HorizontalAlignment="Left"
+                                    Background="#00E87A14"
+                                    CornerRadius="3" Padding="5,1"
+                                    Margin="0,6,0,0">
+                                <TextBlock Text="DETECTED"
+                                           Foreground="{StaticResource BrushAccent}"
+                                           FontSize="8"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- RAM -->
+                <Border Grid.Column="1"
+                        Style="{StaticResource PanelCard}"
+                        Margin="0,0,6,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="36" Height="36"
+                                Background="#9966FF14"
+                                BorderBrush="#9966FF28"
+                                BorderThickness="1"
+                                CornerRadius="7"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="R" FontSize="16"
+                                       Foreground="#9966FF"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="96GB DDR4 — 3 thanh"
+                                       Foreground="#DDDDDD"
+                                       FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock Text="Node 0: 2× 32GB (dual-ch, 64GB)"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9" Margin="0,2,0,0"/>
+                            <TextBlock Text="Node 1: 1× 32GB (single-ch)"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9"/>
+                            <Border HorizontalAlignment="Left"
+                                    Background="#F0A50014"
+                                    CornerRadius="3" Padding="5,1"
+                                    Margin="0,6,0,0">
+                                <TextBlock Text="IMBALANCED"
+                                           Foreground="{StaticResource BrushWarn}"
+                                           FontSize="8"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Mainboard -->
+                <Border Grid.Column="2"
+                        Style="{StaticResource PanelCard}"
+                        Margin="0,0,6,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="36" Height="36"
+                                Background="#00E87A14"
+                                BorderBrush="#00E87A28"
+                                BorderThickness="1"
+                                CornerRadius="7"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="M" FontSize="16"
+                                       Foreground="{StaticResource BrushAccent}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="Huananzhi X99-F8D"
+                                       Foreground="#DDDDDD"
+                                       FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock Text="Dual LGA2011-3 · Intel C612"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9" Margin="0,2,0,0"/>
+                            <TextBlock Text="DDR4 ECC · PCIe x16 × 2"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9"/>
+                            <Border HorizontalAlignment="Left"
+                                    Background="#00E87A14"
+                                    CornerRadius="3" Padding="5,1"
+                                    Margin="0,6,0,0">
+                                <TextBlock Text="DETECTED"
+                                           Foreground="{StaticResource BrushAccent}"
+                                           FontSize="8"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Fan / Cooling -->
+                <Border Grid.Column="3"
+                        Style="{StaticResource PanelCard}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="36" Height="36"
+                                Background="#F0A50014"
+                                BorderBrush="#F0A50028"
+                                BorderThickness="1"
+                                CornerRadius="7"
+                                VerticalAlignment="Top">
+                            <TextBlock Text="F" FontSize="16"
+                                       Foreground="{StaticResource BrushWarn}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Text="Tản nhiệt T400i"
+                                       Foreground="#DDDDDD"
+                                       FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock Text="Tản khí dual-tower"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9" Margin="0,2,0,0"/>
+                            <TextBlock Text="S0: 51°C · S1: 48°C · 1420 RPM"
+                                       Foreground="{StaticResource BrushTextDim}"
+                                       FontSize="9"/>
+                            <Border HorizontalAlignment="Left"
+                                    Background="#00E87A14"
+                                    CornerRadius="3" Padding="5,1"
+                                    Margin="0,6,0,0">
+                                <TextBlock Text="OK"
+                                           Foreground="{StaticResource BrushAccent}"
+                                           FontSize="8"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- HÀNG 3: Capability Check + Rescan button -->
+            <Border Grid.Row="2" Style="{StaticResource PanelCard}">
+                <StackPanel>
+                    <Grid Margin="0,0,0,10">
+                        <TextBlock Text="CAPABILITY CHECK — 198v7 FEATURES"
+                                   Style="{StaticResource MetricLabel}"
+                                   VerticalAlignment="Center"/>
+                        <Border HorizontalAlignment="Right"
+                                Background="#00E87A14"
+                                CornerRadius="3" Padding="7,2">
+                            <TextBlock Text="12 OK · 3 Warn · 3 N/A"
+                                       Foreground="{StaticResource BrushAccent}"
+                                       FontSize="8"/>
+                        </Border>
+                    </Grid>
+
+                    <UniformGrid Columns="2">
+                        <!-- Cột trái -->
+                        <StackPanel Margin="0,0,12,0">
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="MSR Access / WinRing0" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="OK" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="PL1/PL2 Write (MSR 0x610)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Unlocked" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="NUMA Topology (2 nodes)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Detected" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Intel PCM — QPI Monitor" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Active" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushWarn}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="WMI (Ghost Spectre)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Partial" Foreground="{StaticResource BrushWarn}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Timer Resolution 0.5ms" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Verified" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Cột phải -->
+                        <StackPanel>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushDanger}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Speed Shift EPP (MSR 0x774)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="N/A" Foreground="{StaticResource BrushDanger}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushDanger}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="FIVR Undervolt" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="N/A" Foreground="{StaticResource BrushDanger}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushDanger}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Multiplier Unlock" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Locked" Foreground="{StaticResource BrushDanger}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushWarn}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="PROCHOT Offset" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="BIOS?" Foreground="{StaticResource BrushWarn}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="DirectStorage (Win11)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Supported" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="14"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="8" Height="8" Fill="{StaticResource BrushGood}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="EcoQoS API (Win11 25H2)" Style="{StaticResource KvKey}" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Column="2" Text="Available" Foreground="{StaticResource BrushGood}" FontSize="10" FontFamily="Consolas" FontWeight="SemiBold"/>
+                            </Grid>
+                        </StackPanel>
+                    </UniformGrid>
+
+                    <!-- Rescan button -->
+                    <Button x:Name="BtnRescan"
+                            Content="RESCAN HARDWARE"
+                            Style="{StaticResource BtnApply}"
+                            Margin="0,12,0,0"
+                            Click="BtnRescan_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
