@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="_198v7.UI.Views.GpuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BrushBgPrimary}">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Grid.Row="0" Columns="4" Margin="0,0,0,10">
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="GPU LOAD" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtGpuLoad" Text="72%"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="RTX 3060" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="VRAM" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock Text="6.2 GB"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushInfo}"/>
+                    <TextBlock Text="/ 12GB total" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="GPU TEMP" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtGpuTemp" Text="67°C"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushWarn}"/>
+                    <TextBlock Text="Fan: 68%" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}">
+                <StackPanel>
+                    <TextBlock Text="GPU CLOCK" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtGpuClock" Text="1837 MHz"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="Base: 1777MHz" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource PanelCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="NVIDIA OPTIMIZER (NVAPI)" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Low Latency Mode — Ultra" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="NVIDIA Reflex, giảm input lag" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Max Performance Mode" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Tắt dynamic clock scaling" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="VSync Off" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Tối đa FPS không giới hạn" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="HAGS (GPU Scheduling)" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Hardware-Accelerated" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="False" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Shader Cache Cleanup" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Tránh stutter khi load game" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="False" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Resizable BAR" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Cần bật trong BIOS Huananzhi" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="False" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button Content="APPLY GPU SETTINGS" Style="{StaticResource BtnApply}"
+                            Margin="0,10,0,0" Click="BtnApplyGpu_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource PanelCard}" Margin="6,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="GPU INFO (NVML)" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="GPU Interrupt → Socket" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="0 (steered)" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="PCIe Generation" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="Gen 3 x16" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushInfo}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="DirectStorage" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="Enabled" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="VRAM Temp" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="58°C" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Power Draw" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="142W" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushWarn}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Driver Version" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="556.12" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushTextDim}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

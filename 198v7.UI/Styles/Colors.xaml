@@ -43,4 +43,13 @@
     <SolidColorBrush x:Key="BrushBorder"       Color="{StaticResource Border}"/>
     <SolidColorBrush x:Key="BrushBorderHover"  Color="{StaticResource BorderHover}"/>
 
+    <!-- Thêm vào sau MetricSub style -->
+    <Style x:Key="SectionLabel" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextDim}"/>
+        <Setter Property="FontSize"   Value="8"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin"     Value="0,8,0,4"/>
+    </Style>
+
 </ResourceDictionary>

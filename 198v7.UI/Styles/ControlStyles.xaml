@@ -2,62 +2,116 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource BrushTextPrimary}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize"   Value="12"/>
     </Style>
 
     <Style x:Key="PanelCard" TargetType="Border">
-        <Setter Property="Background"    Value="{DynamicResource BrushBgPanel}"/>
-        <Setter Property="BorderBrush"   Value="{DynamicResource BrushBorder}"/>
+        <Setter Property="Background"      Value="{StaticResource BrushBgPanel}"/>
+        <Setter Property="BorderBrush"     Value="{StaticResource BrushBorder}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius"  Value="7"/>
-        <Setter Property="Padding"       Value="12"/>
+        <Setter Property="CornerRadius"    Value="7"/>
+        <Setter Property="Padding"         Value="12"/>
     </Style>
 
     <Style x:Key="MetricCard" TargetType="Border">
-        <Setter Property="Background"      Value="{DynamicResource BrushBgSecondary}"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource BrushBorder}"/>
+        <Setter Property="Background"      Value="{StaticResource BrushBgSecondary}"/>
+        <Setter Property="BorderBrush"     Value="{StaticResource BrushBorder}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius"    Value="6"/>
         <Setter Property="Padding"         Value="10,8"/>
     </Style>
 
-    <Style x:Key="MetricValue" TargetType="TextBlock">
-        <Setter Property="Foreground"  Value="{DynamicResource BrushTextPrimary}"/>
-        <Setter Property="FontSize"    Value="20"/>
-        <Setter Property="FontWeight"  Value="SemiBold"/>
+    <Style x:Key="MetricLabel" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextDim}"/>
+        <Setter Property="FontSize"   Value="9"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Margin"     Value="0,0,0,3"/>
     </Style>
 
-    <Style x:Key="MetricLabel" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource BrushTextSecondary}"/>
-        <Setter Property="FontSize" Value="11"/>
+    <Style x:Key="MetricValue" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+        <Setter Property="FontSize"   Value="20"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style x:Key="MetricSub" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextDim}"/>
+        <Setter Property="FontSize"   Value="9"/>
+        <Setter Property="Margin"     Value="0,2,0,0"/>
+    </Style>
+
+    <!-- SectionLabel — dùng trong CpuOptimizerView -->
+    <Style x:Key="SectionLabel" TargetType="TextBlock">
+        <Setter Property="Foreground"  Value="{StaticResource BrushTextDim}"/>
+        <Setter Property="FontSize"    Value="8"/>
+        <Setter Property="FontFamily"  Value="Segoe UI"/>
+        <Setter Property="FontWeight"  Value="SemiBold"/>
+        <Setter Property="Margin"      Value="0,8,0,4"/>
+        <Setter Property="Padding"     Value="0,0,0,4"/>
     </Style>
 
     <Style x:Key="TabBtn" TargetType="RadioButton">
-        <Setter Property="Background"   Value="Transparent"/>
+        <Setter Property="Background"      Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground"   Value="{DynamicResource BrushTextDim}"/>
-        <Setter Property="FontSize"     Value="11"/>
-        <Setter Property="Padding"      Value="14,8"/>
-        <Setter Property="Cursor"       Value="Hand"/>
+        <Setter Property="Foreground"      Value="{StaticResource BrushTextDim}"/>
+        <Setter Property="FontSize"        Value="11"/>
+        <Setter Property="FontFamily"      Value="Segoe UI"/>
+        <Setter Property="Padding"         Value="14,8"/>
+        <Setter Property="Cursor"          Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
-                    <Border x:Name="bd" Background="Transparent"
+                    <Border x:Name="bd"
+                            Background="Transparent"
                             BorderThickness="0,0,0,2"
                             BorderBrush="Transparent"
                             Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="bd" Property="BorderBrush" Value="{DynamicResource BrushAccent}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource BrushAccent}"/>
+                            <Setter TargetName="bd" Property="BorderBrush"
+                                    Value="{StaticResource BrushAccent}"/>
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource BrushAccent}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource BrushTextPrimary}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BtnApply" TargetType="Button">
+        <Setter Property="Background"      Value="{StaticResource BrushAccentDim}"/>
+        <Setter Property="Foreground"      Value="#001A0A"/>
+        <Setter Property="FontSize"        Value="11"/>
+        <Setter Property="FontWeight"      Value="Bold"/>
+        <Setter Property="FontFamily"      Value="Segoe UI"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding"         Value="0,8"/>
+        <Setter Property="Cursor"          Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background"
+                                    Value="{StaticResource BrushAccent}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -70,52 +124,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
-                    <Grid VerticalAlignment="Center">
-                        <Border x:Name="track" Width="30" Height="16"
+                    <Grid>
+                        <Border x:Name="track"
+                                Width="30" Height="16"
                                 CornerRadius="8"
-                                Background="{DynamicResource BrushBorder}"
-                                HorizontalAlignment="Left"
-                                SnapsToDevicePixels="True"/>
-                        <Ellipse x:Name="knob" Width="10" Height="10"
+                                Background="{StaticResource BrushBorder}"
+                                HorizontalAlignment="Left"/>
+                        <Ellipse x:Name="knob"
+                                 Width="12" Height="12"
                                  Fill="White"
                                  HorizontalAlignment="Left"
-                                 Margin="3,0,0,0"
-                                 VerticalAlignment="Center">
-                            <Ellipse.RenderTransform>
-                                <TranslateTransform x:Name="trans" X="0"/>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="track" Property="Background" Value="{DynamicResource BrushAccentDim}"/>
-                            <Setter TargetName="knob" Property="Margin" Value="17,0,0,0"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="BtnApply" TargetType="Button">
-        <Setter Property="Background"   Value="{DynamicResource BrushAccentDim}"/>
-        <Setter Property="Foreground"   Value="#0C0E10"/>
-        <Setter Property="FontSize"     Value="11"/>
-        <Setter Property="FontWeight"   Value="Bold"/>
-        <Setter Property="Padding"      Value="15,8"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="bd" Background="{TemplateBinding Background}"
-                            CornerRadius="4">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="bd" Property="Background" Value="{DynamicResource BrushAccent}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Opacity" Value="0.8"/>
+                            <Setter TargetName="track" Property="Background"
+                                    Value="{StaticResource BrushAccentDim}"/>
+                            <Setter TargetName="knob" Property="Margin"
+                                    Value="16,0,0,0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -124,16 +151,22 @@
     </Style>
 
     <Style x:Key="KvKey" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource BrushTextSecondary}"/>
-        <Setter Property="FontSize"   Value="10"/>
+        <Setter Property="Foreground"        Value="{StaticResource BrushTextSecondary}"/>
+        <Setter Property="FontSize"          Value="10"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="KvVal" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource BrushTextPrimary}"/>
-        <Setter Property="FontSize"   Value="11"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="Foreground"          Value="{StaticResource BrushTextPrimary}"/>
+        <Setter Property="FontSize"            Value="11"/>
+        <Setter Property="FontFamily"          Value="Consolas"/>
+        <Setter Property="FontWeight"          Value="SemiBold"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
     </Style>
+
+    <!-- Thêm BrushDanger cho Capability Check -->
+    <SolidColorBrush x:Key="BrushDanger" Color="#FF4040"/>
+    <SolidColorBrush x:Key="BrushTextPrimary" Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="#888888"/>
 
 </ResourceDictionary>

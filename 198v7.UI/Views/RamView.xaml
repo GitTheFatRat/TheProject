@@ -1,0 +1,180 @@
+﻿<UserControl x:Class="_198v7.UI.Views.RamView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BrushBgPrimary}">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Grid.Row="0" Columns="4" Margin="0,0,0,10">
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="RAM DÙNG" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtRamUsed" Text="28.4 GB"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushInfo}"/>
+                    <TextBlock Text="/ 96GB tổng" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="CÒN LẠI" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtRamFree" Text="67.6 GB"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="70.4% free" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="NODE 0 (S0)" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock Text="18.2 GB"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushInfo}"/>
+                    <TextBlock Text="/ 64GB · 2 kênh" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}">
+                <StackPanel>
+                    <TextBlock Text="NODE 1 (S1)" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock Text="10.2 GB"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushWarn}"/>
+                    <TextBlock Text="/ 32GB · 1 kênh" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource PanelCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="RAM OPTIMIZER" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="RAM Cleanup trước game" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="EmptyWorkingSet" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Page File Optimizer" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="96GB không cần page file lớn" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Superfetch Remnants Off" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Ghost Spectre còn sót lại" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="LSASS Working Set Trim" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Giảm kernel pool usage" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="False" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button Content="CLEAN RAM NOW" Style="{StaticResource BtnApply}"
+                            Margin="0,10,0,0" Click="BtnCleanRam_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource PanelCard}" Margin="6,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="PROCESS RAM USAGE" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Valorant.exe" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="3.2 GB" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushInfo}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="System &amp; Kernel" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="4.1 GB" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushTextDim}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Chrome.exe" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="2.8 GB" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushWarn}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Discord.exe" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="0.9 GB" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushTextDim}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Others" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="17.4 GB" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushTextDim}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="BW Node 0" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="42 GB/s" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushInfo}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="BW Node 1" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="24 GB/s" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushWarn}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

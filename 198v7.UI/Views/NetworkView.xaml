@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="_198v7.UI.Views.NetworkView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BrushBgPrimary}">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Grid.Row="0" Columns="4" Margin="0,0,0,10">
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="PING RIOT" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtPing" Text="18ms"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="Vietnam · optimized" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="JITTER" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock x:Name="TxtJitter" Text="2ms"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="Stable" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="PACKET LOSS" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock Text="0.0%"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushGood}"/>
+                    <TextBlock Text="Last 100 packets" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource MetricCard}">
+                <StackPanel>
+                    <TextBlock Text="DL / UL" Style="{StaticResource MetricLabel}"/>
+                    <TextBlock Text="45 Mbps"
+                               Style="{StaticResource MetricValue}"
+                               Foreground="{StaticResource BrushInfo}"/>
+                    <TextBlock Text="/ 12 Mbps upload" Style="{StaticResource MetricSub}"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource PanelCard}" Margin="0,0,6,0">
+                <StackPanel>
+                    <TextBlock Text="NETWORK OPTIMIZER" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Nagle Algorithm Off" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="TcpAckFreq + TCPNoDelay" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="NIC Interrupt Moderation Off" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Giảm latency gói tin" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="RSS Scaling" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Phân tải interrupt đều các core" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="NIC Power Saving Off" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Giữ NIC luôn full speed" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="QoS Game Traffic Priority" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Ưu tiên packet của game" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,4"/>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="DNS Cache Boost" Style="{StaticResource KvKey}"/>
+                            <TextBlock Text="Tăng kích thước DNS cache" Foreground="{StaticResource BrushTextDim}" FontSize="9"/>
+                        </StackPanel>
+                        <CheckBox Grid.Column="1" Style="{StaticResource ToggleSwitch}" IsChecked="True" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button Content="APPLY NETWORK" Style="{StaticResource BtnApply}"
+                            Margin="0,10,0,0" Click="BtnApplyNet_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource PanelCard}" Margin="6,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="PING MONITOR — GAME SERVERS" Style="{StaticResource MetricLabel}" Margin="0,0,0,8"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Riot (Valorant)" Style="{StaticResource KvKey}"/>
+                        <TextBlock x:Name="TxtRiot" Grid.Column="1" Text="18ms" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Steam (CS2)" Style="{StaticResource KvKey}"/>
+                        <TextBlock x:Name="TxtSteam" Grid.Column="1" Text="22ms" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Battle.net" Style="{StaticResource KvKey}"/>
+                        <TextBlock x:Name="TxtBnet" Grid.Column="1" Text="25ms" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="EA Origin" Style="{StaticResource KvKey}"/>
+                        <TextBlock x:Name="TxtEa" Grid.Column="1" Text="41ms" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushWarn}"/>
+                    </Grid>
+                    <Rectangle Height="1" Fill="{StaticResource BrushBorder}" Margin="0,3"/>
+                    <Grid Margin="0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Cloudflare 1.1.1.1" Style="{StaticResource KvKey}"/>
+                        <TextBlock Grid.Column="1" Text="4ms" Style="{StaticResource KvVal}" Foreground="{StaticResource BrushGood}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
